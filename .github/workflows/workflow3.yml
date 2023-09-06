@@ -1,8 +1,12 @@
-name: Lint-Test-Build-Deploy v2
+name: Github Context
 on: issues
 jobs:
   issue-info:
     runs-on: ubuntu-latest
     steps:
-      - name: Print github context
-        run: echo ${{ github}}
+      - name: Print event action
+        run: echo ${{ github.event.action }}
+      - name: Print issue author
+        run: echo ${{ github.event.issue.author_association }}
+      - name: Print issue body
+        run: echo ${{ github.event.issue.body }}
