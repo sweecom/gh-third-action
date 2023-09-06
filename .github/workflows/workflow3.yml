@@ -9,4 +9,4 @@ jobs:
       - name: Print issue author
         run: echo ${{ github.event.issue.author_association }}
       - name: Print issue body
-        run: echo ${{ github.event.issue.body }}
+        run: echo "${{ github.event.issue.body }}"
