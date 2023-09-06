@@ -1,0 +1,8 @@
+name: Lint-Test-Build-Deploy v2
+on: issues
+jobs:
+  issue-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print github context
+        run: echo ${{ github}}
