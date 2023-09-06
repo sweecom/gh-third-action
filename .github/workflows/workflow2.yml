@@ -1,7 +1,7 @@
 name: Lint-Test-Build-Deploy v2
 on: push
 jobs:
-  dependency:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -12,20 +12,32 @@ jobs:
           node-version: 20
       - name: Install dependencies
         run: npm ci
-  lint-test:
-    runs-on: ubuntu-latest
-    steps:
       - name: Run lint
         run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm ci
       - name: Run tests
         run: npm run test
-      - name: Run build
-        run: npm run build
-      - name: Run deploy
-        run: echo "I'm deploying"
   build-deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm ci
       - name: Run build
         run: npm run build
       - name: Run deploy
