@@ -4,6 +4,8 @@ jobs:
   issue-info:
     runs-on: ubuntu-latest
     steps:
+      - name: Output events info
+        run: echo "${{ toJSON(github.event) }}"
       - name: Print event action
         run: echo ${{ github.event.action }}
       - name: Print issue author
